@@ -92,6 +92,7 @@ export function LoginView() {
 
 
       <Stack alignItems="center" justifyContent="center" sx={{ height: 1 }}>
+      <br/><br/>
         <Card
           sx={{
             p: 5,
@@ -103,10 +104,10 @@ export function LoginView() {
               <Box
                 component="img"
                 src="/assets/logo.png"
-                sx={{ width: 80 }}
+                sx={{ width: 55 }}
               />
 
-              <Typography variant="h3">
+              <Typography variant="h4">
                 Login
               </Typography>
           </Stack>
