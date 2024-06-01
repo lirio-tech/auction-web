@@ -101,11 +101,13 @@ export function LoginView() {
           }}
         >
           <Stack direction="row" spacing={1}>
-              <Box
-                component="img"
-                src="/assets/logo.png"
-                sx={{ width: 55 }}
-              />
+              <Link href="/" underline="none">                  
+                <Box
+                  component="img"
+                  src="/assets/logo.png"
+                  sx={{ width: 55 }}
+                />
+              </Link>                      
 
               <Typography variant="h4">
                 Login
