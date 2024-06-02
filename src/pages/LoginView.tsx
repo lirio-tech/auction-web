@@ -12,6 +12,9 @@ import IconButton from '@mui/material/IconButton';
 import LoadingButton from '@mui/lab/LoadingButton';
 import { alpha, useTheme } from '@mui/material/styles';
 import InputAdornment from '@mui/material/InputAdornment';
+import axios from 'axios';
+import { useNavigate } from "react-router-dom";
+
 
 //import { useRouter } from 'src/routes/hooks';
 
@@ -20,11 +23,9 @@ import InputAdornment from '@mui/material/InputAdornment';
 //import Logo from 'src/components/logo';
 //import Iconify from '../components/iconify';
 
-const AUCTION_API_HOST = import.meta.env.AUCTION_API_HOST
-
-
 export function LoginView() {
   const theme = useTheme();
+  const navigate = useNavigate()
 
   //const router = useRouter();
 
@@ -32,7 +33,29 @@ export function LoginView() {
 
   const handleClick = () => {
     //router.push('/dashboard');
-    alert(`Request to sign in on analisaleilao.com => ${JSON.stringify(import.meta.env)}`)
+    
+    const params = new URLSearchParams();
+    params.append('client_id', 'auction-cli');
+    params.append('username', 'admin');
+    params.append('password', 'admin');
+    params.append('grant_type', 'password');
+
+    axios({
+          method: 'post',
+          url: `${import.meta.env.VITE_AUCTION_API_HOST}/realms/master/protocol/openid-connect/token`,
+          headers: { 
+            'Content-Type': 'application/x-www-form-urlencoded'
+          },
+          data: params.toString()
+      })
+      .then(function (response) {
+          console.log(JSON.stringify(response.data));
+          localStorage.setItem('TOKEN', response.data.access_token);
+          navigate("/")
+      })
+      .catch(function (error) {
+          console.log(error);
+      });
   };
 
   const renderForm = (
