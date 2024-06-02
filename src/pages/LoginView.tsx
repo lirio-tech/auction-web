@@ -20,6 +20,8 @@ import InputAdornment from '@mui/material/InputAdornment';
 //import Logo from 'src/components/logo';
 //import Iconify from '../components/iconify';
 
+const AUCTION_API_HOST = import.meta.env.AUCTION_API_HOST
+
 
 export function LoginView() {
   const theme = useTheme();
@@ -30,6 +32,7 @@ export function LoginView() {
 
   const handleClick = () => {
     //router.push('/dashboard');
+    alert(`Request to sign in on analisaleilao.com => ${JSON.stringify(import.meta.env)}`)
   };
 
   const renderForm = (
