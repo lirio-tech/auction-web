@@ -40,9 +40,11 @@ export function LoginView() {
     params.append('password', 'admin');
     params.append('grant_type', 'password');
 
+    alert(import.meta.env.VITE_AUTH_API_HOST)
+
     axios({
           method: 'post',
-          url: `${import.meta.env.VITE_AUCTION_API_HOST}/realms/master/protocol/openid-connect/token`,
+          url: `${import.meta.env.VITE_AUTH_API_HOST}/realms/master/protocol/openid-connect/token`,
           headers: { 
             'Content-Type': 'application/x-www-form-urlencoded'
           },
